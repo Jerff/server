@@ -24,7 +24,7 @@ nano /etc/crontab
 mkdir /var/lib/mysql/tmp
 chown mysql:mysql /var/lib/mysql/tmp
 id mysql
-файл fstab добавляем запись
+файл fstab добавляем запись uid и gid пользователя mysql
 tmpfs /var/lib/mysql/tmp tmpfs rw,gid=993,uid=995,size=1G,nr_inodes=10k,mode=0700 0 0
 
 перезаливаем файлы из архива
