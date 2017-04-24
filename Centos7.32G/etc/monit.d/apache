@@ -1,0 +1,4 @@
+ check process httpd with pidfile /var/run/httpd/httpd.pid
+   group apache
+   start program = "/bin/systemctl start httpd.service"
+   stop program  = "/bin/systemctl stop httpd.service"

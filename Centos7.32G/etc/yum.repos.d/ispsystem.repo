@@ -1,0 +1,8 @@
+[ispsystem-stable]
+name=ispsystem-stable
+failovermethod=priority
+gpgkey=
+enabled=1
+#baseurl=http://download.ispsystem.com/repo/centos/stable/$releasever/$basearch
+mirrorlist=http://download.ispsystem.com/repo/centos/stable/mirrorlist.txt
+gpgcheck=0

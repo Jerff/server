@@ -1,0 +1,20 @@
+[Unit]
+Description=MariaDB database server
+After=syslog.target
+After=network.target
+
+[Service]
+LimitNOFILE=65535
+Type=forking
+User=mysql
+Group=mysql
+
+ExecStart=/etc/init.d/mysql start
+ExecStop=/etc/init.d/mysql stop
+
+TimeoutSec=300
+
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

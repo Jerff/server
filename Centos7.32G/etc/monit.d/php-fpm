@@ -1,0 +1,3 @@
+check process php-fpm with pidfile /var/run/php-fpm/php-fpm.pid
+   start program = "/bin/systemctl start php-fpm.service"
+   stop program  = "/bin/systemctl stop php-fpm.service"

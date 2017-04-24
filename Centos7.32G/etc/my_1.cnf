@@ -1,0 +1,76 @@
+[mysqld]
+port = 3306
+pid-file = /var/run/mariadb/mariadb.pid
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+default-storage-engine = InnoDB
+
+back_log = 500
+#skip-networking
+max_connections = 100
+max_connect_errors = 10
+table_open_cache = 2048
+max_allowed_packet = 16M
+#binlog_cache_size = 1M
+max_heap_table_size = 64M
+read_buffer_size = 2M
+read_rnd_buffer_size = 16M
+sort_buffer_size = 32M
+join_buffer_size = 32M
+thread_cache_size = 64
+#thread_concurrency = 8
+table_cache = 4096
+query_cache_type = 1
+query_cache_size = 512M
+query_cache_limit = 4M
+
+ft_min_word_len = 4
+thread_stack = 240K
+transaction_isolation = READ-COMMITTED
+innodb_flush_method = O_DIRECT
+tmp_table_size = 64M
+#log-bin=mysql-bin
+#binlog_format=mixed
+#expire_logs_days = 2
+slow_query_log
+long_query_time = 2
+tmpdir = /dev/shm
+
+#*** MyISAM Specific options
+key_buffer_size = 64M
+bulk_insert_buffer_size = 64M
+myisam_sort_buffer_size = 128M
+myisam_max_sort_file_size = 1G
+myisam_repair_threads = 1
+myisam_recover
+
+# *** INNODB Specific options ***
+innodb_file_per_table = 1
+innodb_additional_mem_pool_size = 20M
+innodb_buffer_pool_size = 10G
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_write_io_threads = 8
+innodb_read_io_threads = 8
+innodb_flush_log_at_trx_commit = 2
+innodb_log_buffer_size = 8M
+#innodb_log_files_in_group = 3
+innodb_max_dirty_pages_pct = 90
+innodb_lock_wait_timeout = 120
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+open-files-limit = 55000
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+

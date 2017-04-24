@@ -1,0 +1,7 @@
+check process mariadb with pidfile /var/run/mariadb/mariadb.pid
+   group mysql
+   start program = "/bin/systemctl start mariadb.service"
+   stop program  = "/bin/systemctl stop mariadb.service"
+    if failed
+        unixsocket /var/lib/mysql/mysql.sock
+    then stop

@@ -1,0 +1,74 @@
+[mysqld]
+local-infile=0
+pid-file = /var/run/mysqld/mysqld.pid
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+
+innodb_flush_method = O_DIRECT
+transaction-isolation = READ-COMMITTED
+innodb_flush_log_at_trx_commit = 2
+query_cache_limit = 16M
+query_cache_size = 128M
+tmp_table_size = 32M
+max_heap_table_size = 32M
+thread_cache_size = 4
+table_open_cache = 8048
+innodb_buffer_pool_size = 4G
+sort_buffer_size  = 4M
+join_buffer_size = 4M
+
+max_connect_errors      = 10
+max_connections         = 400
+wait_timeout            = 60
+connect_timeout         = 10
+interactive_timeout     = 60
+#cache setting
+query_cache_limit       = 2M
+query_cache_size        = 50M
+query_cache_type        = 1
+table_open_cache        = 5000
+thread_cache_size       = 100
+
+#buffer sizes
+key_buffer_size         = 20M
+sort_buffer_size        = 2M
+read_buffer_size        = 2M
+join_buffer_size        = 2M
+
+#tmpdir / temp table sizes
+tmp_table_size          = 256M
+max_heap_table_size     = 256M
+
+#misc. settings
+default-storage-engine  = innoDB
+skip-external-locking
+server-id               = 1
+open-files-limit        = 65535
+max_allowed_packet      = 64M
+
+#innodb settings
+innodb_data_file_path     = ibdata1:10M:autoextend
+innodb_thread_concurrency = 0
+innodb_buffer_pool_size   = 4G
+innodb_log_buffer_size    = 8M
+innodb_file_per_table     = 1
+log_error               = /var/log/mysql/error.log
+log_slow_queries        = /var/log/mysql/mysql-slow.log
+long_query_time         = 2
+
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+

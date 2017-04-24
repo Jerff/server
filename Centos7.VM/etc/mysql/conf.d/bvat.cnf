@@ -1,0 +1,16 @@
+# from bitrix_env
+# memory: 256 <= system_memory < 512
+[mysqld]
+    query_cache_size = 32M
+    query_cache_limit = 2M
+    innodb_buffer_pool_size = 64M
+    max_connections = 12
+    table_open_cache = 4096
+    thread_cache_size = 32
+    max_heap_table_size = 32M 
+    tmp_table_size = 32M
+    key_buffer_size = 16M
+    join_buffer_size = 2M
+    sort_buffer_size = 2M
+    bulk_insert_buffer_size = 2M
+    myisam_sort_buffer_size = 2M

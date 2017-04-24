@@ -1,0 +1,29 @@
+[mysqld]
+    tmp_table_size = 512M
+    max_heap_table_size = 512M 
+    query_cache_size = 512M
+    query_cache_limit = 32M
+    innodb_buffer_pool_size = 8000M
+    max_connections = 100
+    table_open_cache = 16000
+    table-definition-cache = 25000
+    open_files_limit = 32000
+    open-files-limit = 32000
+    table-open-cache = 32000
+    open-files-limit    = 24000
+    sort_buffer_size = 32M
+    join_buffer_size = 32M
+    bulk_insert_buffer_size = 2M
+    myisam_sort_buffer_size = 8M
+    read_buffer_size = 2M
+    read_rnd_buffer_size = 16M
+    ft_min_word_len = 4
+    thread_stack = 240K
+    innodb_write_io_threads = 8
+    innodb_read_io_threads = 8
+    innodb_flush_log_at_trx_commit = 2
+    innodb_log_buffer_size = 8M
+    innodb_max_dirty_pages_pct = 90
+    innodb_lock_wait_timeout = 120
+
+    tmpdir=/var/lib/mysql/tmp
